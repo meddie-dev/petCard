@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Details · PetCard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <button id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1>Pet Details</h1>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-shield-dog"></i>
+      <div><h1>PetCard</h1><p>FurParent Suite</p></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="add-pet.html"><i class="fa-solid fa-plus"></i> Add Pet</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="furparent-card.html"><i class="fa-solid fa-address-card"></i> FurParent Card</a>
+      <div class="nav-divider">Account</div>
+      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarUserAvatar"><i class="fa-solid fa-user"></i></div>
+        <div class="user-info">
+          <strong id="sidebarUserName">FurParent</strong>
+          <span id="sidebarUserId">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main" id="petDetailWrap">
+    <div class="page-header-row mb-24">
+      <div class="page-header" style="margin-bottom:0;">
+        <h1 id="petNameHeader">—</h1>
+        <p>Pet ID: <span id="petIdHeader" style="font-family:monospace;">—</span></p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-outline" id="viewCardBtn"><i class="fa-solid fa-id-card"></i> View ID Card</button>
+        <button class="btn btn-danger" id="deletePetBtn"><i class="fa-solid fa-trash"></i> Delete</button>
+      </div>
+    </div>
+
+    <div class="grid grid-sidebar">
+      <div>
+        <!-- Edit pet -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-pen-to-square"></i> Edit Pet Info</div>
+          </div>
+          <form id="editPetForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="ePetName" required>
+              </div>
+              <div class="form-group">
+                <label>Species</label>
+                <select class="form-control" id="ePetSpecies">
+                  <option>Dog</option><option>Cat</option><option>Bird</option>
+                  <option>Rabbit</option><option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Breed</label>
+                <input type="text" class="form-control" id="ePetBreed">
+              </div>
+              <div class="form-group">
+                <label>Age (years)</label>
+                <input type="number" class="form-control" id="ePetAge" min="0" max="40">
+              </div>
+              <div class="form-group">
+                <label>Gender</label>
+                <select class="form-control" id="ePetGender">
+                  <option>Male</option><option>Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Color</label>
+                <input type="text" class="form-control" id="ePetColor">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea class="form-control" id="ePetNotes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+          </form>
+        </div>
+
+        <!-- Diary -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-book-open"></i> Online Pet Diary</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:14px;">
+            <input type="text" class="form-control" id="diaryInput" placeholder="Write a note...">
+            <button class="btn btn-primary" id="addDiaryBtn"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <div id="diaryList" class="grid" style="gap:8px;max-height:360px;overflow-y:auto;"></div>
+        </div>
+
+        <!-- Events -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-calendar-days"></i> Events & Notes</div>
+          </div>
+          <div class="form-row" style="margin-bottom:12px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Type</label>
+              <select class="form-control" id="eventType">
+                <option value="checkup">Check up</option>
+                <option value="birthday">Birthday</option>
+                <option value="died">Died</option>
+                <option value="groom">Groom</option>
+                <option value="daily">Daily Check up</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Date</label>
+              <input type="date" class="form-control" id="eventDate">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" id="eventTitle" placeholder="e.g. Annual vaccine">
+          </div>
+          <div class="form-group">
+            <label>Description (optional)</label>
+            <input type="text" class="form-control" id="eventDesc">
+          </div>
+          <button class="btn btn-primary" id="addEventBtn"><i class="fa-solid fa-plus"></i> Add Event</button>
+          <div id="eventList" class="grid mt-16" style="gap:8px;max-height:360px;overflow-y:auto;"></div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Pet Photo -->
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-camera"></i> Pet Photo</div>
+          </div>
+          <div style="text-align:center;">
+            <div class="id-photo" id="petAvatarBox" style="width:140px;height:140px;font-size:3.5rem;background:#f0f5fa;color:var(--navy);border:2px solid var(--border);margin:0 auto 16px;"></div>
+            <input type="file" id="petPhotoInput" accept="image/*" hidden>
+            <button class="btn btn-outline btn-block" id="petPhotoBtn"><i class="fa-solid fa-upload"></i> Upload Photo</button>
+          </div>
+        </div>
+
+        <!-- Vet Records -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-syringe"></i> Vet Records</div>
+          </div>
+          <p class="text-muted" style="font-size:0.82rem;">Vaccines, deworming, and Nexgard records appear here once added via the events page.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

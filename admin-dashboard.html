@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · PetCard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <button id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1>Admin Panel</h1>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div><h1>PetCard</h1><p>Admin Panel</p></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="admin-dashboard.html" class="active"><i class="fa-solid fa-users"></i> FurParents</a>
+      <div class="nav-divider">Account</div>
+      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>FurParent Accounts</h1>
+      <p>Monitor and manage all registered pet owners.</p>
+    </div>
+
+    <div class="grid grid-3 mb-24">
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-info"><h3 id="adminTotal">0</h3><p>Total Accounts</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="stat-info"><h3 id="adminActive">0</h3><p>Active</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-ban"></i></div>
+        <div class="stat-info"><h3 id="adminSuspended">0</h3><p>Suspended</p></div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>FurParent</th>
+            <th>FurParent ID</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Role</th>
+            <th>Registered</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="adminTable"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · PetCard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR (mobile) -->
+  <div class="topbar">
+    <button id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1>PetCard</h1>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-shield-dog"></i>
+      <div>
+        <h1>PetCard</h1>
+        <p>FurParent Suite</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="add-pet.html"><i class="fa-solid fa-plus"></i> Add Pet</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="furparent-card.html"><i class="fa-solid fa-address-card"></i> FurParent Card</a>
+      <div class="nav-divider">Account</div>
+      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarUserAvatar"><i class="fa-solid fa-user"></i></div>
+        <div class="user-info">
+          <strong id="sidebarUserName">FurParent</strong>
+          <span id="sidebarUserId">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p>Welcome back, <span id="welcomeName">FurParent</span></p>
+    </div>
+
+    <div class="grid grid-4 mb-24">
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-paw"></i></div>
+        <div class="stat-info"><h3 id="statPets">0</h3><p>Total Pets</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="stat-info"><h3 id="statEvents">0</h3><p>Upcoming Events</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+        <div class="stat-info"><h3 id="statDiary">0</h3><p>Diary Entries</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><i class="fa-solid fa-shield-dog"></i></div>
+        <div class="stat-info"><h3>Active</h3><p>Account Status</p></div>
+      </div>
+    </div>
+
+    <div class="grid grid-sidebar">
+      <div>
+        <div class="card mb-24">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-list"></i> My Pets</div>
+            <a href="add-pet.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Add Pet</a>
+          </div>
+          <div id="petList" class="grid" style="gap:12px;"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-clock"></i> Upcoming Events</div>
+          </div>
+          <div id="upcomingList" class="grid" style="gap:10px;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="calendar mb-24">
+          <div class="calendar-header">
+            <button id="calPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <h3 id="calendarLabel">—</h3>
+            <button id="calNext"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title mb-16"><i class="fa-solid fa-calendar-day"></i> Selected Date</div>
+          <div id="dayEventsList" class="grid" style="gap:10px;">
+            <p class="text-muted" style="font-size:0.85rem;">Select a date to view events.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Pet ID · PetCard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <button id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1>National Pet ID</h1>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-shield-dog"></i>
+      <div><h1>PetCard</h1><p>FurParent Suite</p></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="add-pet.html"><i class="fa-solid fa-plus"></i> Add Pet</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="furparent-card.html"><i class="fa-solid fa-address-card"></i> FurParent Card</a>
+      <div class="nav-divider">Account</div>
+      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarUserAvatar"><i class="fa-solid fa-user"></i></div>
+        <div class="user-info">
+          <strong id="sidebarUserName">FurParent</strong>
+          <span id="sidebarUserId">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>National Pet ID Card</h1>
+      <p>Click the card to flip between front and back.</p>
+    </div>
+
+    <div class="flip-wrap">
+      <div class="flip-card" id="petFlipCard">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="id-design">
+              <div class="id-header">
+                <i class="fa-solid fa-shield-dog"></i>
+                <span>PETCARD · PH</span>
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <div class="id-body">
+                <div class="id-photo" id="cardPetPhoto">
+                  <i class="fa-solid fa-dog"></i>
+                </div>
+                <div class="id-details">
+                  <h2 id="cardPetName">—</h2>
+                  <p><strong>ID:</strong> <span id="cardPetId">—</span></p>
+                  <p><strong>Species:</strong> <span id="cardPetSpecies">—</span></p>
+                  <p><strong>Breed:</strong> <span id="cardPetBreed">—</span></p>
+                  <p><strong>Owner:</strong> <span id="cardOwnerName">—</span></p>
+                </div>
+              </div>
+              <div class="id-footer">
+                <span>Tap to flip</span>
+                <i class="fa-solid fa-qrcode"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-back">
+            <div class="id-design">
+              <div class="id-header">
+                <i class="fa-solid fa-shield-dog"></i>
+                <span>NATIONAL PET ID</span>
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div class="id-body" style="flex-direction:column;align-items:flex-start;">
+                <div class="id-back-body" style="width:100%;">
+                  <p><strong>Date Registered:</strong> <span id="cardDate">—</span></p>
+                  <p><strong>Microchip:</strong> <span id="cardMicrochip">—</span></p>
+                  <p><strong>Status:</strong> Active</p>
+                  <p style="margin-top:12px;font-size:0.7rem;color:rgba(255,255,255,0.6);">
+                    This card certifies the pet is registered under the National Pet ID System of the Philippines.
+                  </p>
+                </div>
+              </div>
+              <div class="id-footer">
+                <span>Tap to flip back</span>
+                <i class="fa-solid fa-qrcode"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a href="dashboard.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

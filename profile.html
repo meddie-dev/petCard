@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile · PetCard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <button id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1>Profile</h1>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-solid fa-shield-dog"></i>
+      <div><h1>PetCard</h1><p>FurParent Suite</p></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="add-pet.html"><i class="fa-solid fa-plus"></i> Add Pet</a>
+      <a href="profile.html" class="active"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="furparent-card.html"><i class="fa-solid fa-address-card"></i> FurParent Card</a>
+      <div class="nav-divider">Account</div>
+      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarUserAvatar"><i class="fa-solid fa-user"></i></div>
+        <div class="user-info">
+          <strong id="sidebarUserName">FurParent</strong>
+          <span id="sidebarUserId">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>Profile</h1>
+      <p>Manage your FurParent account information.</p>
+    </div>
+
+    <div class="grid grid-sidebar">
+      <div class="card">
+        <form id="profileForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" class="form-control" id="pName" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" id="pEmail" disabled>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" class="form-control" id="pPhone">
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" class="form-control" id="pCity">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" id="pAddress">
+          </div>
+
+          <div class="card" style="background:#f8fafc;margin:20px 0;">
+            <div class="card-title mb-8"><i class="fa-solid fa-id-badge"></i> FurParent ID</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong id="displayFurparentId" style="font-family:monospace;font-size:1.1rem;color:var(--navy);">—</strong>
+              <i class="fa-solid fa-qrcode" style="font-size:1.4rem;color:var(--navy);"></i>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Profile</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-camera"></i> Profile Photo</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="id-photo" id="profileAvatarBox" style="width:140px;height:140px;font-size:3.5rem;background:#f0f5fa;color:var(--navy);border:2px solid var(--border);margin:0 auto 16px;">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <input type="file" id="avatarInput" accept="image/*" hidden>
+          <button class="btn btn-outline btn-block" id="avatarBtn"><i class="fa-solid fa-upload"></i> Upload Photo</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
